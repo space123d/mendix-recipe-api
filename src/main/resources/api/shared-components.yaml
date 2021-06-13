@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'Shared Components'
+  description: 'Separate definition for shared components used by the Recipe API.'
+
+paths: {}
+
+components:
+  schemas:
+    Id:
+      type: string
+      format: uuid
+      example: "123e4567-e89b-12d3-a456-426655440000"
+      description: The unique id
+      
+    ErrorObject:
+      type: object
+      required:
+        - errorMessages
+      properties:
+        errorMessages:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorMessage"
+
+    ErrorMessage:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+
+  parameters:
+    IdPathParam:
+      name: id
+      in: path
+      description: The unique id
+      required: true
+      schema:
+        type: string
+        format: uuid
+        example: "123e4567-e89b-12d3-a456-426655440000"
+    ProjectIdPathParam:
+      name: projectId
+      in: path
+      description: The unique project id
+      required: true
+      schema:
+        type: integer
+        example: 1234567

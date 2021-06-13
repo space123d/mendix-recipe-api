@@ -1,0 +1,8 @@
+src/main/java/com/mendix/recipe/api/controller/generated/ApiUtil.java
+src/main/java/com/mendix/recipe/api/controller/generated/RecipeApi.java
+src/main/java/com/mendix/recipe/api/model/generated/CategoryResponseObject.java
+src/main/java/com/mendix/recipe/api/model/generated/IngredientResponseObject.java
+src/main/java/com/mendix/recipe/api/model/generated/IngredientResponseObjectAmount.java
+src/main/java/com/mendix/recipe/api/model/generated/RecipeResponseObject.java
+src/main/java/com/mendix/recipe/api/model/generated/RecipeResponseObjectHead.java
+src/main/java/com/mendix/recipe/api/model/generated/RecipeResponseObjectHeadDirections.java

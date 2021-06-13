@@ -1,0 +1,90 @@
+openapi: 3.0.0
+info:
+  description: RecipeAPI
+  version: '1.0.0'
+  title: 'Recipe API'
+  contact:
+    email: space12.3d@gmail.com
+    name: Recipe support Team
+
+tags:
+  - name: Recipe
+    description: All the operations related to recipes
+
+paths:
+ "/v1/recipes":
+    get:
+      tags:
+        - Recipe
+      summary: Gets all available recipes
+      description: |
+        Gets all available recipes
+      operationId: getAvailableRecipes
+      responses:
+        '200':
+          description: Returns available recipe
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RecipeResponseObject'
+
+components:
+  schemas:
+    RecipeResponseObject:
+      type: object
+      properties:
+        recipeId:
+          type: string
+          format: uuid
+          example: "123e4567-e89b-12d3-a456-426655440000"
+        creationTimestamp:
+          type: string
+          format: 'date-time'
+        head:
+           type: object
+           properties:
+            title:
+              type: string
+              example: "title"
+            yield:
+              type: integer
+              example: 6
+            categories:
+              type: array
+              items:
+                $ref: '#/components/schemas/CategoryResponseObject' 
+            ingredients:
+              type: array
+              items:
+                $ref: '#/components/schemas/IngredientResponseObject'
+            directions:
+              type: object
+              properties:
+               step:
+                 type: string
+                 example: "steps..."
+
+    CategoryResponseObject:
+      type: object
+      properties:
+        category:
+            type: string
+            example: "Main dish"
+
+    IngredientResponseObject:
+      type: object
+      properties:
+        amount:
+           type: object
+           properties:
+            quantity:
+              type: integer
+              example: 6
+            unit:
+              type: string
+              example: "pound"
+        item:
+            type: string
+            example: "Onion; large, chopped"
