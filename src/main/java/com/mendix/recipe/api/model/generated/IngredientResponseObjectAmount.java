@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 /**
  * IngredientResponseObjectAmount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-13T15:37:40.195987+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-13T15:46:33.658156+02:00[Europe/Amsterdam]")
 public class IngredientResponseObjectAmount   {
   @JsonProperty("quantity")
   private Integer quantity;
