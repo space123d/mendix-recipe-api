@@ -1,27 +1,19 @@
 package com.mendix.recipe.api.config;
 
-import java.util.Arrays;
 import java.util.Optional;
 import javax.servlet.ServletContext;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import io.swagger.models.auth.In;
 import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.ApiKey;
-import springfox.documentation.service.AuthorizationScope;
 import springfox.documentation.service.Contact;
-import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
@@ -43,15 +35,6 @@ public class RecipeAPIOpenAPIConfig implements WebMvcConfigurer {
 				.termsOfServiceUrl("URL").version("1.0.0").contact(new Contact("", "", "space12.3d@gmail.com")).build();
 	}
 
-	ApiKey securityScheme() {
-		return new ApiKey("Authorization", HttpHeaders.AUTHORIZATION, In.HEADER.name());
-	}
-
-	SecurityContext securityContext() {
-		return SecurityContext.builder().securityReferences(Arrays.asList(
-				SecurityReference.builder().reference("Authorization").scopes(new AuthorizationScope[0]).build()))
-				.build();
-	}
 
 	@Bean
 	public Docket AMcustomImplementation(ServletContext servletContext) {

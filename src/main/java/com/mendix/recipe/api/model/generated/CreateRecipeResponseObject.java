@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 /**
  * CreateRecipeResponseObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T22:20:25.091255+02:00[Europe/Amsterdam]")
 public class CreateRecipeResponseObject   {
   @JsonProperty("id")
   private UUID id;

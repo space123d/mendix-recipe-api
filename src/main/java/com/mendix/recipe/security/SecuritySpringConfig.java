@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
 
 	 private static final String[] ALLOWED_ENDPOINTS = {
-				"/", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**", "/swagger-resources/**" };
+				"/", "/swagger-ui/**", "/api-docs/**", "/v3/api-docs/**", "/swagger-resources/**", "/h2-console/**" };
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
@@ -25,9 +25,10 @@ public class SecuritySpringConfig extends WebSecurityConfigurerAdapter {
                 ALLOWED_ENDPOINTS
         );
 
-        http
-				.authorizeRequests()
-				.antMatchers(allowedEndpoints).permitAll().anyRequest().authenticated();
+		http.httpBasic().disable();
+		http.authorizeRequests().antMatchers(allowedEndpoints).permitAll().antMatchers("/console/*")
+				.fullyAuthenticated().and().formLogin().permitAll();
+		http.csrf().disable();
 
     }
 
