@@ -1,13 +1,12 @@
 package com.mendix.recipe;
 
 import org.springframework.boot.SpringApplication;
-
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.retry.annotation.EnableRetry;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-
-@EnableRetry
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "com.mendix.recipe" })
+@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class })
 public class RecipeApplication {
 
 	public static void main(String[] args) {
