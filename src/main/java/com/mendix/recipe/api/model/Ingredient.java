@@ -14,4 +14,5 @@ public class Ingredient {
 	private UUID ingredientId;
 	private String title;
 	private IngredientItems items;
+	private UUID recipeId;
 }

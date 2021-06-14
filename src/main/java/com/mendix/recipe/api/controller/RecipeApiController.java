@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ public class RecipeApiController implements RecipeApi {
 	
 	private RecipeService recipeService;
 
+	@Autowired
 	public RecipeApiController(RecipeService recipeService) {
 		this.recipeService = recipeService;
 	}

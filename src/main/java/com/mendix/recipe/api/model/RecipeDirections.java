@@ -13,4 +13,5 @@ public class RecipeDirections {
 
 	private UUID id;
 	private String step;
+	private UUID recipeId;
 }

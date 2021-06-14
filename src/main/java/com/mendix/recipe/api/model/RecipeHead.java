@@ -15,4 +15,5 @@ public class RecipeHead {
 	private String title;
 	private Integer yield;
 	private Category categories;
+	private UUID recipeId;
 }

@@ -13,4 +13,5 @@ public class Category {
 
 	private UUID categoryId;
 	private String categoryName;
+	private UUID recipeId;
 }
