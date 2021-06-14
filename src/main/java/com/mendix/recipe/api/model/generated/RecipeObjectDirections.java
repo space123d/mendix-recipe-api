@@ -3,7 +3,6 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.CategoryObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -11,32 +10,31 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CategoryResponseObject
+ * RecipeObjectDirections
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T14:42:05.910455+02:00[Europe/Amsterdam]")
-public class CategoryResponseObject   {
-  @JsonProperty("Items")
-  private CategoryObject items;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class RecipeObjectDirections   {
+  @JsonProperty("step")
+  private String step;
 
-  public CategoryResponseObject items(CategoryObject items) {
-    this.items = items;
+  public RecipeObjectDirections step(String step) {
+    this.step = step;
     return this;
   }
 
   /**
-   * Get items
-   * @return items
+   * Get step
+   * @return step
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "steps...", value = "")
 
-  @Valid
 
-  public CategoryObject getItems() {
-    return items;
+  public String getStep() {
+    return step;
   }
 
-  public void setItems(CategoryObject items) {
-    this.items = items;
+  public void setStep(String step) {
+    this.step = step;
   }
 
 
@@ -48,21 +46,21 @@ public class CategoryResponseObject   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CategoryResponseObject categoryResponseObject = (CategoryResponseObject) o;
-    return Objects.equals(this.items, categoryResponseObject.items);
+    RecipeObjectDirections recipeObjectDirections = (RecipeObjectDirections) o;
+    return Objects.equals(this.step, recipeObjectDirections.step);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(step);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CategoryResponseObject {\n");
+    sb.append("class RecipeObjectDirections {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    step: ").append(toIndentedString(step)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -10,17 +10,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * IngredientItemsResponseObjectAmount
+ * IngredientItemsObjectAmount
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class IngredientItemsResponseObjectAmount   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class IngredientItemsObjectAmount   {
   @JsonProperty("quantity")
   private Integer quantity;
 
   @JsonProperty("unit")
   private String unit;
 
-  public IngredientItemsResponseObjectAmount quantity(Integer quantity) {
+  public IngredientItemsObjectAmount quantity(Integer quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -40,7 +40,7 @@ public class IngredientItemsResponseObjectAmount   {
     this.quantity = quantity;
   }
 
-  public IngredientItemsResponseObjectAmount unit(String unit) {
+  public IngredientItemsObjectAmount unit(String unit) {
     this.unit = unit;
     return this;
   }
@@ -69,9 +69,9 @@ public class IngredientItemsResponseObjectAmount   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IngredientItemsResponseObjectAmount ingredientItemsResponseObjectAmount = (IngredientItemsResponseObjectAmount) o;
-    return Objects.equals(this.quantity, ingredientItemsResponseObjectAmount.quantity) &&
-        Objects.equals(this.unit, ingredientItemsResponseObjectAmount.unit);
+    IngredientItemsObjectAmount ingredientItemsObjectAmount = (IngredientItemsObjectAmount) o;
+    return Objects.equals(this.quantity, ingredientItemsObjectAmount.quantity) &&
+        Objects.equals(this.unit, ingredientItemsObjectAmount.unit);
   }
 
   @Override
@@ -82,7 +82,7 @@ public class IngredientItemsResponseObjectAmount   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IngredientItemsResponseObjectAmount {\n");
+    sb.append("class IngredientItemsObjectAmount {\n");
     
     sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
     sb.append("    unit: ").append(toIndentedString(unit)).append("\n");

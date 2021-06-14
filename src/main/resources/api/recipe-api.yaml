@@ -28,11 +28,110 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/RecipeResponseObject'
+                  $ref: '#/components/schemas/RecipeObject'
+    post:
+      tags:
+        - Recipe
+      requestBody:
+        $ref: "#/components/requestBodies/CreateRecipe"
+      summary: Creates a recipes
+      operationId: createRecipe
+      description: |
+        Creates a Recipe
+      responses:
+        "201":
+          $ref: "#/components/responses/CreateRecipeResponse"
+        "422":
+          description: Incorrect Recipe detail provided
+          content:
+            application/json:
+              schema:
+                $ref: "shared-components.yaml#/components/schemas/ErrorObject"
+        "409":
+          description: Recipe already exists
+          content:
+            application/json:
+              schema:
+                $ref: "shared-components.yaml#/components/schemas/ErrorObject"
+ "/v1/recipes/categories":
+    get:
+      tags:
+        - Recipe
+      summary: Gets all available categories
+      description: |
+        Gets all available categories
+      operationId: getAvailableCategories
+      responses:
+        '200':
+          description: Returns available categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CategoryObject'
+ "/v1/recipes/categories/{id}":
+    get:
+      tags:
+        - Recipe
+      summary: Gets a Recipe given its Category id
+      operationId: getRecipe
+      description: |
+        Gets a Recipe by Category id
+      parameters:
+        - $ref: "shared-components.yaml#/components/parameters/IdPathParam"
+      responses:
+        "200":
+          description: Returns the specific Recipe matching the passed id
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeObject"
+        "404":
+          description: Recipe not found
+          content:
+            application/json:
+              schema:
+                $ref: "shared-components.yaml#/components/schemas/ErrorObject"
+ "/v1/recipes/search":
+    get:
+      tags:
+        - Recipe
+      summary: Gets a Recipe given its recipe name and category name
+      operationId: getRecipeByName
+      description: |
+        Gets a Recipe by Recipe and category name
+      parameters:
+                  - in: query
+                    name: recipeName
+                    required: true
+                    schema:
+                        type: string
+                        description: recipe title
+                        example: 'Another zuccini'
+                  - in: query
+                    name: categoryName
+                    schema:
+                        type: string
+                        example: "Main dish"
+                        description: categoy name
+      responses:
+        "200":
+          description: Returns the specific Recipe matching names
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecipeObject"
+        "404":
+          description: Recipe not found
+          content:
+            application/json:
+              schema:
+                $ref: "shared-components.yaml#/components/schemas/ErrorObject"
 
 components:
   schemas:
-    RecipeResponseObject:
+    RecipeObject:
       type: object
       properties:
         recipeId:
@@ -54,11 +153,11 @@ components:
             categories:
               type: array
               items:
-                $ref: '#/components/schemas/CategoryResponseObject' 
+                $ref: '#/components/schemas/CategoryObject' 
         ingredients:
               type: array
               items:
-                $ref: '#/components/schemas/IngredientResponseObject'
+                $ref: '#/components/schemas/IngredientObject'
         directions:
               type: object
               properties:
@@ -66,14 +165,18 @@ components:
                  type: string
                  example: "steps..."
 
-    CategoryResponseObject:
+    CategoryObject:
       type: object
       properties:
-        category:
+        categoryId:
+          type: string
+          format: uuid
+          example: "123e4567-e89b-12d3-a456-426655440000"
+        categoryName:
             type: string
             example: "Main dish"
-
-    IngredientResponseObject:
+    
+    IngredientObject:
         type: object
         properties:
           title:
@@ -81,9 +184,9 @@ components:
             example: "title"
           Items:
             type: array
-            $ref: '#/components/schemas/IngredientItemsResponseObject'
+            $ref: '#/components/schemas/IngredientItemsObject'
 
-    IngredientItemsResponseObject:
+    IngredientItemsObject:
       type: object
       properties:
         amount:
@@ -98,3 +201,26 @@ components:
         item:
             type: string
             example: "Onion; large, chopped"
+    CreateRecipeResponseObject:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+  requestBodies:
+    #Recipes
+    CreateRecipe:
+      description: The Recipe creation details
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/RecipeObject"
+  responses:
+    CreateRecipeResponse:
+      description: The create recipe response
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CreateRecipeResponseObject"

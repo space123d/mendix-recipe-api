@@ -3,7 +3,7 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.IngredientItemsResponseObjectAmount;
+import com.mendix.recipe.api.model.generated.IngredientItemsObjectAmount;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -11,17 +11,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * IngredientItemsResponseObject
+ * IngredientItemsObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class IngredientItemsResponseObject   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class IngredientItemsObject   {
   @JsonProperty("amount")
-  private IngredientItemsResponseObjectAmount amount;
+  private IngredientItemsObjectAmount amount;
 
   @JsonProperty("item")
   private String item;
 
-  public IngredientItemsResponseObject amount(IngredientItemsResponseObjectAmount amount) {
+  public IngredientItemsObject amount(IngredientItemsObjectAmount amount) {
     this.amount = amount;
     return this;
   }
@@ -34,15 +34,15 @@ public class IngredientItemsResponseObject   {
 
   @Valid
 
-  public IngredientItemsResponseObjectAmount getAmount() {
+  public IngredientItemsObjectAmount getAmount() {
     return amount;
   }
 
-  public void setAmount(IngredientItemsResponseObjectAmount amount) {
+  public void setAmount(IngredientItemsObjectAmount amount) {
     this.amount = amount;
   }
 
-  public IngredientItemsResponseObject item(String item) {
+  public IngredientItemsObject item(String item) {
     this.item = item;
     return this;
   }
@@ -71,9 +71,9 @@ public class IngredientItemsResponseObject   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IngredientItemsResponseObject ingredientItemsResponseObject = (IngredientItemsResponseObject) o;
-    return Objects.equals(this.amount, ingredientItemsResponseObject.amount) &&
-        Objects.equals(this.item, ingredientItemsResponseObject.item);
+    IngredientItemsObject ingredientItemsObject = (IngredientItemsObject) o;
+    return Objects.equals(this.amount, ingredientItemsObject.amount) &&
+        Objects.equals(this.item, ingredientItemsObject.item);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class IngredientItemsResponseObject   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IngredientItemsResponseObject {\n");
+    sb.append("class IngredientItemsObject {\n");
     
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    item: ").append(toIndentedString(item)).append("\n");

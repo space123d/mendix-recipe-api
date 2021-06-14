@@ -42,11 +42,4 @@ components:
         type: string
         format: uuid
         example: "123e4567-e89b-12d3-a456-426655440000"
-    ProjectIdPathParam:
-      name: projectId
-      in: path
-      description: The unique project id
-      required: true
-      schema:
-        type: integer
-        example: 1234567
+

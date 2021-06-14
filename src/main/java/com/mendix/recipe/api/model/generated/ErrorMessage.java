@@ -3,7 +3,6 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.CategoryObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -11,32 +10,32 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CategoryResponseObject
+ * ErrorMessage
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T14:42:05.910455+02:00[Europe/Amsterdam]")
-public class CategoryResponseObject   {
-  @JsonProperty("Items")
-  private CategoryObject items;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class ErrorMessage   {
+  @JsonProperty("message")
+  private String message;
 
-  public CategoryResponseObject items(CategoryObject items) {
-    this.items = items;
+  public ErrorMessage message(String message) {
+    this.message = message;
     return this;
   }
 
   /**
-   * Get items
-   * @return items
+   * Get message
+   * @return message
   */
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
-  @Valid
 
-  public CategoryObject getItems() {
-    return items;
+  public String getMessage() {
+    return message;
   }
 
-  public void setItems(CategoryObject items) {
-    this.items = items;
+  public void setMessage(String message) {
+    this.message = message;
   }
 
 
@@ -48,21 +47,21 @@ public class CategoryResponseObject   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CategoryResponseObject categoryResponseObject = (CategoryResponseObject) o;
-    return Objects.equals(this.items, categoryResponseObject.items);
+    ErrorMessage errorMessage = (ErrorMessage) o;
+    return Objects.equals(this.message, errorMessage.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(message);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CategoryResponseObject {\n");
+    sb.append("class ErrorMessage {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }

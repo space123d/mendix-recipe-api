@@ -5,7 +5,11 @@
  */
 package com.mendix.recipe.api.controller.generated;
 
-import com.mendix.recipe.api.model.generated.RecipeResponseObject;
+import com.mendix.recipe.api.model.generated.CategoryObject;
+import com.mendix.recipe.api.model.generated.CreateRecipeResponseObject;
+import com.mendix.recipe.api.model.generated.ErrorObject;
+import com.mendix.recipe.api.model.generated.RecipeObject;
+import java.util.UUID;
 import io.swagger.annotations.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
 @Validated
 @Api(value = "Recipe", description = "the Recipe API")
 public interface RecipeApi {
@@ -31,23 +35,148 @@ public interface RecipeApi {
     }
 
     /**
+     * POST /v1/recipes : Creates a recipes
+     * Creates a Recipe 
+     *
+     * @param recipeObject The Recipe creation details (optional)
+     * @return The create recipe response (status code 201)
+     *         or Incorrect Recipe detail provided (status code 422)
+     *         or Recipe already exists (status code 409)
+     */
+    @ApiOperation(value = "Creates a recipes", nickname = "createRecipe", notes = "Creates a Recipe ", response = CreateRecipeResponseObject.class, tags={ "Recipe", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 201, message = "The create recipe response", response = CreateRecipeResponseObject.class),
+        @ApiResponse(code = 422, message = "Incorrect Recipe detail provided", response = ErrorObject.class),
+        @ApiResponse(code = 409, message = "Recipe already exists", response = ErrorObject.class) })
+    @PostMapping(
+        value = "/v1/recipes",
+        produces = { "application/json" },
+        consumes = { "application/json" }
+    )
+    default ResponseEntity<CreateRecipeResponseObject> createRecipe(@ApiParam(value = "The Recipe creation details"  )  @Valid @RequestBody(required = false) RecipeObject recipeObject) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /v1/recipes/categories : Gets all available categories
+     * Gets all available categories 
+     *
+     * @return Returns available categories (status code 200)
+     */
+    @ApiOperation(value = "Gets all available categories", nickname = "getAvailableCategories", notes = "Gets all available categories ", response = CategoryObject.class, responseContainer = "List", tags={ "Recipe", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Returns available categories", response = CategoryObject.class, responseContainer = "List") })
+    @GetMapping(
+        value = "/v1/recipes/categories",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<CategoryObject>> getAvailableCategories() {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
      * GET /v1/recipes : Gets all available recipes
      * Gets all available recipes 
      *
      * @return Returns available recipe (status code 200)
      */
-    @ApiOperation(value = "Gets all available recipes", nickname = "getAvailableRecipes", notes = "Gets all available recipes ", response = RecipeResponseObject.class, responseContainer = "List", tags={ "Recipe", })
+    @ApiOperation(value = "Gets all available recipes", nickname = "getAvailableRecipes", notes = "Gets all available recipes ", response = RecipeObject.class, responseContainer = "List", tags={ "Recipe", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Returns available recipe", response = RecipeResponseObject.class, responseContainer = "List") })
+        @ApiResponse(code = 200, message = "Returns available recipe", response = RecipeObject.class, responseContainer = "List") })
     @GetMapping(
         value = "/v1/recipes",
         produces = { "application/json" }
     )
-    default ResponseEntity<List<RecipeResponseObject>> getAvailableRecipes() {
+    default ResponseEntity<List<RecipeObject>> getAvailableRecipes() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"category\" : \"Main dish\" }, { \"category\" : \"Main dish\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /v1/recipes/categories/{id} : Gets a Recipe given its Category id
+     * Gets a Recipe by Category id 
+     *
+     * @param id The unique id (required)
+     * @return Returns the specific Recipe matching the passed id (status code 200)
+     *         or Recipe not found (status code 404)
+     */
+    @ApiOperation(value = "Gets a Recipe given its Category id", nickname = "getRecipe", notes = "Gets a Recipe by Category id ", response = RecipeObject.class, tags={ "Recipe", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Returns the specific Recipe matching the passed id", response = RecipeObject.class),
+        @ApiResponse(code = 404, message = "Recipe not found", response = ErrorObject.class) })
+    @GetMapping(
+        value = "/v1/recipes/categories/{id}",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<RecipeObject> getRecipe(@ApiParam(value = "The unique id",required=true) @PathVariable("id") UUID id) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /v1/recipes/search : Gets a Recipe given its recipe name and category name
+     * Gets a Recipe by Recipe and category name 
+     *
+     * @param recipeName  (required)
+     * @param categoryName  (optional)
+     * @return Returns the specific Recipe matching names (status code 200)
+     *         or Recipe not found (status code 404)
+     */
+    @ApiOperation(value = "Gets a Recipe given its recipe name and category name", nickname = "getRecipeByName", notes = "Gets a Recipe by Recipe and category name ", response = RecipeObject.class, tags={ "Recipe", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "Returns the specific Recipe matching names", response = RecipeObject.class),
+        @ApiResponse(code = 404, message = "Recipe not found", response = ErrorObject.class) })
+    @GetMapping(
+        value = "/v1/recipes/search",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<RecipeObject> getRecipeByName(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "recipeName", required = true) String recipeName,@ApiParam(value = "") @Valid @RequestParam(value = "categoryName", required = false) Optional<String> categoryName) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

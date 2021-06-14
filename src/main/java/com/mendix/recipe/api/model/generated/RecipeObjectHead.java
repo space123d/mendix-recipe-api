@@ -3,7 +3,7 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.CategoryResponseObject;
+import com.mendix.recipe.api.model.generated.CategoryObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -13,10 +13,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * RecipeResponseObjectHead
+ * RecipeObjectHead
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class RecipeResponseObjectHead   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class RecipeObjectHead   {
   @JsonProperty("title")
   private String title;
 
@@ -25,9 +25,9 @@ public class RecipeResponseObjectHead   {
 
   @JsonProperty("categories")
   @Valid
-  private List<CategoryResponseObject> categories = null;
+  private List<CategoryObject> categories = null;
 
-  public RecipeResponseObjectHead title(String title) {
+  public RecipeObjectHead title(String title) {
     this.title = title;
     return this;
   }
@@ -47,7 +47,7 @@ public class RecipeResponseObjectHead   {
     this.title = title;
   }
 
-  public RecipeResponseObjectHead yield(Integer yield) {
+  public RecipeObjectHead yield(Integer yield) {
     this.yield = yield;
     return this;
   }
@@ -67,12 +67,12 @@ public class RecipeResponseObjectHead   {
     this.yield = yield;
   }
 
-  public RecipeResponseObjectHead categories(List<CategoryResponseObject> categories) {
+  public RecipeObjectHead categories(List<CategoryObject> categories) {
     this.categories = categories;
     return this;
   }
 
-  public RecipeResponseObjectHead addCategoriesItem(CategoryResponseObject categoriesItem) {
+  public RecipeObjectHead addCategoriesItem(CategoryObject categoriesItem) {
     if (this.categories == null) {
       this.categories = new ArrayList<>();
     }
@@ -88,11 +88,11 @@ public class RecipeResponseObjectHead   {
 
   @Valid
 
-  public List<CategoryResponseObject> getCategories() {
+  public List<CategoryObject> getCategories() {
     return categories;
   }
 
-  public void setCategories(List<CategoryResponseObject> categories) {
+  public void setCategories(List<CategoryObject> categories) {
     this.categories = categories;
   }
 
@@ -105,10 +105,10 @@ public class RecipeResponseObjectHead   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecipeResponseObjectHead recipeResponseObjectHead = (RecipeResponseObjectHead) o;
-    return Objects.equals(this.title, recipeResponseObjectHead.title) &&
-        Objects.equals(this.yield, recipeResponseObjectHead.yield) &&
-        Objects.equals(this.categories, recipeResponseObjectHead.categories);
+    RecipeObjectHead recipeObjectHead = (RecipeObjectHead) o;
+    return Objects.equals(this.title, recipeObjectHead.title) &&
+        Objects.equals(this.yield, recipeObjectHead.yield) &&
+        Objects.equals(this.categories, recipeObjectHead.categories);
   }
 
   @Override
@@ -119,7 +119,7 @@ public class RecipeResponseObjectHead   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecipeResponseObjectHead {\n");
+    sb.append("class RecipeObjectHead {\n");
     
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    yield: ").append(toIndentedString(yield)).append("\n");

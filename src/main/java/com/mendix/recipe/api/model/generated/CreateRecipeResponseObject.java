@@ -5,36 +5,39 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * RecipeResponseObjectDirections
+ * CreateRecipeResponseObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class RecipeResponseObjectDirections   {
-  @JsonProperty("step")
-  private String step;
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class CreateRecipeResponseObject   {
+  @JsonProperty("id")
+  private UUID id;
 
-  public RecipeResponseObjectDirections step(String step) {
-    this.step = step;
+  public CreateRecipeResponseObject id(UUID id) {
+    this.id = id;
     return this;
   }
 
   /**
-   * Get step
-   * @return step
+   * Get id
+   * @return id
   */
-  @ApiModelProperty(example = "steps...", value = "")
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
 
+  @Valid
 
-  public String getStep() {
-    return step;
+  public UUID getId() {
+    return id;
   }
 
-  public void setStep(String step) {
-    this.step = step;
+  public void setId(UUID id) {
+    this.id = id;
   }
 
 
@@ -46,21 +49,21 @@ public class RecipeResponseObjectDirections   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecipeResponseObjectDirections recipeResponseObjectDirections = (RecipeResponseObjectDirections) o;
-    return Objects.equals(this.step, recipeResponseObjectDirections.step);
+    CreateRecipeResponseObject createRecipeResponseObject = (CreateRecipeResponseObject) o;
+    return Objects.equals(this.id, createRecipeResponseObject.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(step);
+    return Objects.hash(id);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecipeResponseObjectDirections {\n");
+    sb.append("class CreateRecipeResponseObject {\n");
     
-    sb.append("    step: ").append(toIndentedString(step)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }

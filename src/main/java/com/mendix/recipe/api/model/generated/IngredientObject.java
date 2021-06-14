@@ -3,7 +3,7 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.IngredientItemsResponseObject;
+import com.mendix.recipe.api.model.generated.IngredientItemsObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -11,17 +11,17 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * IngredientResponseObject
+ * IngredientObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class IngredientResponseObject   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class IngredientObject   {
   @JsonProperty("title")
   private String title;
 
   @JsonProperty("Items")
-  private IngredientItemsResponseObject items;
+  private IngredientItemsObject items;
 
-  public IngredientResponseObject title(String title) {
+  public IngredientObject title(String title) {
     this.title = title;
     return this;
   }
@@ -41,7 +41,7 @@ public class IngredientResponseObject   {
     this.title = title;
   }
 
-  public IngredientResponseObject items(IngredientItemsResponseObject items) {
+  public IngredientObject items(IngredientItemsObject items) {
     this.items = items;
     return this;
   }
@@ -54,11 +54,11 @@ public class IngredientResponseObject   {
 
   @Valid
 
-  public IngredientItemsResponseObject getItems() {
+  public IngredientItemsObject getItems() {
     return items;
   }
 
-  public void setItems(IngredientItemsResponseObject items) {
+  public void setItems(IngredientItemsObject items) {
     this.items = items;
   }
 
@@ -71,9 +71,9 @@ public class IngredientResponseObject   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IngredientResponseObject ingredientResponseObject = (IngredientResponseObject) o;
-    return Objects.equals(this.title, ingredientResponseObject.title) &&
-        Objects.equals(this.items, ingredientResponseObject.items);
+    IngredientObject ingredientObject = (IngredientObject) o;
+    return Objects.equals(this.title, ingredientObject.title) &&
+        Objects.equals(this.items, ingredientObject.items);
   }
 
   @Override
@@ -84,7 +84,7 @@ public class IngredientResponseObject   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IngredientResponseObject {\n");
+    sb.append("class IngredientObject {\n");
     
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");

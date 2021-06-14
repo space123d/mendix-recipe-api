@@ -3,9 +3,9 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.IngredientResponseObject;
-import com.mendix.recipe.api.model.generated.RecipeResponseObjectDirections;
-import com.mendix.recipe.api.model.generated.RecipeResponseObjectHead;
+import com.mendix.recipe.api.model.generated.IngredientObject;
+import com.mendix.recipe.api.model.generated.RecipeObjectDirections;
+import com.mendix.recipe.api.model.generated.RecipeObjectHead;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * RecipeResponseObject
+ * RecipeObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
-public class RecipeResponseObject   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T15:43:43.575715+02:00[Europe/Amsterdam]")
+public class RecipeObject   {
   @JsonProperty("recipeId")
   private UUID recipeId;
 
@@ -29,16 +29,16 @@ public class RecipeResponseObject   {
   private java.time.Instant creationTimestamp;
 
   @JsonProperty("head")
-  private RecipeResponseObjectHead head;
+  private RecipeObjectHead head;
 
   @JsonProperty("ingredients")
   @Valid
-  private List<IngredientResponseObject> ingredients = null;
+  private List<IngredientObject> ingredients = null;
 
   @JsonProperty("directions")
-  private RecipeResponseObjectDirections directions;
+  private RecipeObjectDirections directions;
 
-  public RecipeResponseObject recipeId(UUID recipeId) {
+  public RecipeObject recipeId(UUID recipeId) {
     this.recipeId = recipeId;
     return this;
   }
@@ -59,7 +59,7 @@ public class RecipeResponseObject   {
     this.recipeId = recipeId;
   }
 
-  public RecipeResponseObject creationTimestamp(java.time.Instant creationTimestamp) {
+  public RecipeObject creationTimestamp(java.time.Instant creationTimestamp) {
     this.creationTimestamp = creationTimestamp;
     return this;
   }
@@ -80,7 +80,7 @@ public class RecipeResponseObject   {
     this.creationTimestamp = creationTimestamp;
   }
 
-  public RecipeResponseObject head(RecipeResponseObjectHead head) {
+  public RecipeObject head(RecipeObjectHead head) {
     this.head = head;
     return this;
   }
@@ -93,20 +93,20 @@ public class RecipeResponseObject   {
 
   @Valid
 
-  public RecipeResponseObjectHead getHead() {
+  public RecipeObjectHead getHead() {
     return head;
   }
 
-  public void setHead(RecipeResponseObjectHead head) {
+  public void setHead(RecipeObjectHead head) {
     this.head = head;
   }
 
-  public RecipeResponseObject ingredients(List<IngredientResponseObject> ingredients) {
+  public RecipeObject ingredients(List<IngredientObject> ingredients) {
     this.ingredients = ingredients;
     return this;
   }
 
-  public RecipeResponseObject addIngredientsItem(IngredientResponseObject ingredientsItem) {
+  public RecipeObject addIngredientsItem(IngredientObject ingredientsItem) {
     if (this.ingredients == null) {
       this.ingredients = new ArrayList<>();
     }
@@ -122,15 +122,15 @@ public class RecipeResponseObject   {
 
   @Valid
 
-  public List<IngredientResponseObject> getIngredients() {
+  public List<IngredientObject> getIngredients() {
     return ingredients;
   }
 
-  public void setIngredients(List<IngredientResponseObject> ingredients) {
+  public void setIngredients(List<IngredientObject> ingredients) {
     this.ingredients = ingredients;
   }
 
-  public RecipeResponseObject directions(RecipeResponseObjectDirections directions) {
+  public RecipeObject directions(RecipeObjectDirections directions) {
     this.directions = directions;
     return this;
   }
@@ -143,11 +143,11 @@ public class RecipeResponseObject   {
 
   @Valid
 
-  public RecipeResponseObjectDirections getDirections() {
+  public RecipeObjectDirections getDirections() {
     return directions;
   }
 
-  public void setDirections(RecipeResponseObjectDirections directions) {
+  public void setDirections(RecipeObjectDirections directions) {
     this.directions = directions;
   }
 
@@ -160,12 +160,12 @@ public class RecipeResponseObject   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecipeResponseObject recipeResponseObject = (RecipeResponseObject) o;
-    return Objects.equals(this.recipeId, recipeResponseObject.recipeId) &&
-        Objects.equals(this.creationTimestamp, recipeResponseObject.creationTimestamp) &&
-        Objects.equals(this.head, recipeResponseObject.head) &&
-        Objects.equals(this.ingredients, recipeResponseObject.ingredients) &&
-        Objects.equals(this.directions, recipeResponseObject.directions);
+    RecipeObject recipeObject = (RecipeObject) o;
+    return Objects.equals(this.recipeId, recipeObject.recipeId) &&
+        Objects.equals(this.creationTimestamp, recipeObject.creationTimestamp) &&
+        Objects.equals(this.head, recipeObject.head) &&
+        Objects.equals(this.ingredients, recipeObject.ingredients) &&
+        Objects.equals(this.directions, recipeObject.directions);
   }
 
   @Override
@@ -176,7 +176,7 @@ public class RecipeResponseObject   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecipeResponseObject {\n");
+    sb.append("class RecipeObject {\n");
     
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    creationTimestamp: ").append(toIndentedString(creationTimestamp)).append("\n");
