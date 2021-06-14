@@ -4,8 +4,6 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.mendix.recipe.api.model.generated.CategoryResponseObject;
-import com.mendix.recipe.api.model.generated.IngredientResponseObject;
-import com.mendix.recipe.api.model.generated.RecipeResponseObjectHeadDirections;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * RecipeResponseObjectHead
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:18:48.283600+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
 public class RecipeResponseObjectHead   {
   @JsonProperty("title")
   private String title;
@@ -28,13 +26,6 @@ public class RecipeResponseObjectHead   {
   @JsonProperty("categories")
   @Valid
   private List<CategoryResponseObject> categories = null;
-
-  @JsonProperty("ingredients")
-  @Valid
-  private List<IngredientResponseObject> ingredients = null;
-
-  @JsonProperty("directions")
-  private RecipeResponseObjectHeadDirections directions;
 
   public RecipeResponseObjectHead title(String title) {
     this.title = title;
@@ -105,56 +96,6 @@ public class RecipeResponseObjectHead   {
     this.categories = categories;
   }
 
-  public RecipeResponseObjectHead ingredients(List<IngredientResponseObject> ingredients) {
-    this.ingredients = ingredients;
-    return this;
-  }
-
-  public RecipeResponseObjectHead addIngredientsItem(IngredientResponseObject ingredientsItem) {
-    if (this.ingredients == null) {
-      this.ingredients = new ArrayList<>();
-    }
-    this.ingredients.add(ingredientsItem);
-    return this;
-  }
-
-  /**
-   * Get ingredients
-   * @return ingredients
-  */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public List<IngredientResponseObject> getIngredients() {
-    return ingredients;
-  }
-
-  public void setIngredients(List<IngredientResponseObject> ingredients) {
-    this.ingredients = ingredients;
-  }
-
-  public RecipeResponseObjectHead directions(RecipeResponseObjectHeadDirections directions) {
-    this.directions = directions;
-    return this;
-  }
-
-  /**
-   * Get directions
-   * @return directions
-  */
-  @ApiModelProperty(value = "")
-
-  @Valid
-
-  public RecipeResponseObjectHeadDirections getDirections() {
-    return directions;
-  }
-
-  public void setDirections(RecipeResponseObjectHeadDirections directions) {
-    this.directions = directions;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -167,14 +108,12 @@ public class RecipeResponseObjectHead   {
     RecipeResponseObjectHead recipeResponseObjectHead = (RecipeResponseObjectHead) o;
     return Objects.equals(this.title, recipeResponseObjectHead.title) &&
         Objects.equals(this.yield, recipeResponseObjectHead.yield) &&
-        Objects.equals(this.categories, recipeResponseObjectHead.categories) &&
-        Objects.equals(this.ingredients, recipeResponseObjectHead.ingredients) &&
-        Objects.equals(this.directions, recipeResponseObjectHead.directions);
+        Objects.equals(this.categories, recipeResponseObjectHead.categories);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, yield, categories, ingredients, directions);
+    return Objects.hash(title, yield, categories);
   }
 
   @Override
@@ -185,8 +124,6 @@ public class RecipeResponseObjectHead   {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    yield: ").append(toIndentedString(yield)).append("\n");
     sb.append("    categories: ").append(toIndentedString(categories)).append("\n");
-    sb.append("    ingredients: ").append(toIndentedString(ingredients)).append("\n");
-    sb.append("    directions: ").append(toIndentedString(directions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -3,7 +3,7 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.mendix.recipe.api.model.generated.IngredientResponseObjectAmount;
+import com.mendix.recipe.api.model.generated.IngredientItemsResponseObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.openapitools.jackson.nullable.JsonNullable;
@@ -13,53 +13,53 @@ import javax.validation.constraints.*;
 /**
  * IngredientResponseObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:18:48.283600+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
 public class IngredientResponseObject   {
-  @JsonProperty("amount")
-  private IngredientResponseObjectAmount amount;
+  @JsonProperty("title")
+  private String title;
 
-  @JsonProperty("item")
-  private String item;
+  @JsonProperty("Items")
+  private IngredientItemsResponseObject items;
 
-  public IngredientResponseObject amount(IngredientResponseObjectAmount amount) {
-    this.amount = amount;
+  public IngredientResponseObject title(String title) {
+    this.title = title;
     return this;
   }
 
   /**
-   * Get amount
-   * @return amount
+   * Get title
+   * @return title
+  */
+  @ApiModelProperty(example = "title", value = "")
+
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  public IngredientResponseObject items(IngredientItemsResponseObject items) {
+    this.items = items;
+    return this;
+  }
+
+  /**
+   * Get items
+   * @return items
   */
   @ApiModelProperty(value = "")
 
   @Valid
 
-  public IngredientResponseObjectAmount getAmount() {
-    return amount;
+  public IngredientItemsResponseObject getItems() {
+    return items;
   }
 
-  public void setAmount(IngredientResponseObjectAmount amount) {
-    this.amount = amount;
-  }
-
-  public IngredientResponseObject item(String item) {
-    this.item = item;
-    return this;
-  }
-
-  /**
-   * Get item
-   * @return item
-  */
-  @ApiModelProperty(example = "Onion; large, chopped", value = "")
-
-
-  public String getItem() {
-    return item;
-  }
-
-  public void setItem(String item) {
-    this.item = item;
+  public void setItems(IngredientItemsResponseObject items) {
+    this.items = items;
   }
 
 
@@ -72,13 +72,13 @@ public class IngredientResponseObject   {
       return false;
     }
     IngredientResponseObject ingredientResponseObject = (IngredientResponseObject) o;
-    return Objects.equals(this.amount, ingredientResponseObject.amount) &&
-        Objects.equals(this.item, ingredientResponseObject.item);
+    return Objects.equals(this.title, ingredientResponseObject.title) &&
+        Objects.equals(this.items, ingredientResponseObject.items);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, item);
+    return Objects.hash(title, items);
   }
 
   @Override
@@ -86,8 +86,8 @@ public class IngredientResponseObject   {
     StringBuilder sb = new StringBuilder();
     sb.append("class IngredientResponseObject {\n");
     
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
-    sb.append("    item: ").append(toIndentedString(item)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }

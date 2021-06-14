@@ -10,14 +10,14 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * RecipeResponseObjectHeadDirections
+ * RecipeResponseObjectDirections
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:18:48.283600+02:00[Europe/Amsterdam]")
-public class RecipeResponseObjectHeadDirections   {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
+public class RecipeResponseObjectDirections   {
   @JsonProperty("step")
   private String step;
 
-  public RecipeResponseObjectHeadDirections step(String step) {
+  public RecipeResponseObjectDirections step(String step) {
     this.step = step;
     return this;
   }
@@ -46,8 +46,8 @@ public class RecipeResponseObjectHeadDirections   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    RecipeResponseObjectHeadDirections recipeResponseObjectHeadDirections = (RecipeResponseObjectHeadDirections) o;
-    return Objects.equals(this.step, recipeResponseObjectHeadDirections.step);
+    RecipeResponseObjectDirections recipeResponseObjectDirections = (RecipeResponseObjectDirections) o;
+    return Objects.equals(this.step, recipeResponseObjectDirections.step);
   }
 
   @Override
@@ -58,7 +58,7 @@ public class RecipeResponseObjectHeadDirections   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RecipeResponseObjectHeadDirections {\n");
+    sb.append("class RecipeResponseObjectDirections {\n");
     
     sb.append("    step: ").append(toIndentedString(step)).append("\n");
     sb.append("}");

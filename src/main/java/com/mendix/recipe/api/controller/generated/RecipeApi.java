@@ -21,7 +21,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:18:48.283600+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
 @Validated
 @Api(value = "Recipe", description = "the Recipe API")
 public interface RecipeApi {
@@ -47,7 +47,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"directions\" : { \"step\" : \"steps...\" }, \"yield\" : 6, \"ingredients\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"categories\" : [ { \"category\" : \"Main dish\" }, { \"category\" : \"Main dish\" } ], \"title\" : \"title\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"category\" : \"Main dish\" }, { \"category\" : \"Main dish\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

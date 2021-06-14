@@ -3,10 +3,14 @@ package com.mendix.recipe.api.model.generated;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.mendix.recipe.api.model.generated.IngredientResponseObject;
+import com.mendix.recipe.api.model.generated.RecipeResponseObjectDirections;
 import com.mendix.recipe.api.model.generated.RecipeResponseObjectHead;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
@@ -15,7 +19,7 @@ import javax.validation.constraints.*;
 /**
  * RecipeResponseObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:18:48.283600+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-14T12:54:21.686983+02:00[Europe/Amsterdam]")
 public class RecipeResponseObject   {
   @JsonProperty("recipeId")
   private UUID recipeId;
@@ -26,6 +30,13 @@ public class RecipeResponseObject   {
 
   @JsonProperty("head")
   private RecipeResponseObjectHead head;
+
+  @JsonProperty("ingredients")
+  @Valid
+  private List<IngredientResponseObject> ingredients = null;
+
+  @JsonProperty("directions")
+  private RecipeResponseObjectDirections directions;
 
   public RecipeResponseObject recipeId(UUID recipeId) {
     this.recipeId = recipeId;
@@ -90,6 +101,56 @@ public class RecipeResponseObject   {
     this.head = head;
   }
 
+  public RecipeResponseObject ingredients(List<IngredientResponseObject> ingredients) {
+    this.ingredients = ingredients;
+    return this;
+  }
+
+  public RecipeResponseObject addIngredientsItem(IngredientResponseObject ingredientsItem) {
+    if (this.ingredients == null) {
+      this.ingredients = new ArrayList<>();
+    }
+    this.ingredients.add(ingredientsItem);
+    return this;
+  }
+
+  /**
+   * Get ingredients
+   * @return ingredients
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<IngredientResponseObject> getIngredients() {
+    return ingredients;
+  }
+
+  public void setIngredients(List<IngredientResponseObject> ingredients) {
+    this.ingredients = ingredients;
+  }
+
+  public RecipeResponseObject directions(RecipeResponseObjectDirections directions) {
+    this.directions = directions;
+    return this;
+  }
+
+  /**
+   * Get directions
+   * @return directions
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public RecipeResponseObjectDirections getDirections() {
+    return directions;
+  }
+
+  public void setDirections(RecipeResponseObjectDirections directions) {
+    this.directions = directions;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -102,12 +163,14 @@ public class RecipeResponseObject   {
     RecipeResponseObject recipeResponseObject = (RecipeResponseObject) o;
     return Objects.equals(this.recipeId, recipeResponseObject.recipeId) &&
         Objects.equals(this.creationTimestamp, recipeResponseObject.creationTimestamp) &&
-        Objects.equals(this.head, recipeResponseObject.head);
+        Objects.equals(this.head, recipeResponseObject.head) &&
+        Objects.equals(this.ingredients, recipeResponseObject.ingredients) &&
+        Objects.equals(this.directions, recipeResponseObject.directions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, creationTimestamp, head);
+    return Objects.hash(recipeId, creationTimestamp, head, ingredients, directions);
   }
 
   @Override
@@ -118,6 +181,8 @@ public class RecipeResponseObject   {
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    creationTimestamp: ").append(toIndentedString(creationTimestamp)).append("\n");
     sb.append("    head: ").append(toIndentedString(head)).append("\n");
+    sb.append("    ingredients: ").append(toIndentedString(ingredients)).append("\n");
+    sb.append("    directions: ").append(toIndentedString(directions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

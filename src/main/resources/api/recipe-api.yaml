@@ -55,11 +55,11 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/CategoryResponseObject' 
-            ingredients:
+        ingredients:
               type: array
               items:
                 $ref: '#/components/schemas/IngredientResponseObject'
-            directions:
+        directions:
               type: object
               properties:
                step:
@@ -74,6 +74,16 @@ components:
             example: "Main dish"
 
     IngredientResponseObject:
+        type: object
+        properties:
+          title:
+            type: string
+            example: "title"
+          Items:
+            type: array
+            $ref: '#/components/schemas/IngredientItemsResponseObject'
+
+    IngredientItemsResponseObject:
       type: object
       properties:
         amount:
