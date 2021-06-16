@@ -1,5 +1,6 @@
 package com.mendix.recipe.api.model;
 
+import java.util.List;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -13,6 +14,6 @@ public class Ingredient {
 
 	private UUID ingredientId;
 	private String title;
-	private IngredientItems items;
+	private List<IngredientItems> items;
 	private UUID recipeId;
 }

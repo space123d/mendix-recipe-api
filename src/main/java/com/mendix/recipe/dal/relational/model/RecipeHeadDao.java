@@ -20,4 +20,5 @@ public class RecipeHeadDao {
 	private String title;
 	private Integer yield;
 	private byte[] categoryId;
+	private byte[] recipeId;
 }

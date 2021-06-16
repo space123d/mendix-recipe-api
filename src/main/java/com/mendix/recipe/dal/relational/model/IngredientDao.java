@@ -19,4 +19,5 @@ public class IngredientDao {
 	private byte[] ingredientId;
 	private String title;
 	private byte[] ingredientItemId;
+	private byte[] recipeId;
 }

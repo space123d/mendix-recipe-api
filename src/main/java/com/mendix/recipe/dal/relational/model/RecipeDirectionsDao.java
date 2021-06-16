@@ -18,4 +18,5 @@ public class RecipeDirectionsDao {
 	@Id
 	private byte[] id;
 	private String step;
+	private byte[] recipeId;
 }

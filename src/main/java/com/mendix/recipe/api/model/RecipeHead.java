@@ -1,5 +1,6 @@
 package com.mendix.recipe.api.model;
 
+import java.util.List;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -14,6 +15,6 @@ public class RecipeHead {
 	private UUID id;
 	private String title;
 	private Integer yield;
-	private Category categories;
+	private List<Category> categories;
 	private UUID recipeId;
 }

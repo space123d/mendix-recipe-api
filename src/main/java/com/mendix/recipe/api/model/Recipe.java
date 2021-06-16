@@ -1,6 +1,7 @@
 package com.mendix.recipe.api.model;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 import lombok.Getter;
@@ -15,6 +16,6 @@ public class Recipe {
 	private UUID recipeId;
 	private Instant creationTimestamp;
 	private RecipeHead head;
-	private Ingredient ingredients;
+	private List<Ingredient> ingredients;
 	private RecipeDirections directions;
 }
