@@ -7,4 +7,6 @@ import com.mendix.recipe.api.model.RecipeHead;
 public interface RecipeServiceHeadRepository {
 
 	List<RecipeHead> getAvailableRecipesHead();
+
+	void createRecipeHead(RecipeHead head);
 }

@@ -7,4 +7,6 @@ import com.mendix.recipe.api.model.Ingredient;
 public interface IngredientsRepository {
 
 	List<Ingredient> getAvailableIngredients();
+
+	void createIngredient(List<Ingredient> ingredients);
 }

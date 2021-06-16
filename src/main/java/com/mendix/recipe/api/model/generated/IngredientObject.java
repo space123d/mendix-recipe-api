@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.mendix.recipe.api.model.generated.IngredientItemsObject;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -13,13 +15,14 @@ import javax.validation.constraints.*;
 /**
  * IngredientObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T08:58:46.618447+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:32:02.593619+02:00[Europe/Amsterdam]")
 public class IngredientObject   {
   @JsonProperty("title")
   private String title;
 
   @JsonProperty("Items")
-  private IngredientItemsObject items;
+  @Valid
+  private List<IngredientItemsObject> items = null;
 
   public IngredientObject title(String title) {
     this.title = title;
@@ -41,8 +44,16 @@ public class IngredientObject   {
     this.title = title;
   }
 
-  public IngredientObject items(IngredientItemsObject items) {
+  public IngredientObject items(List<IngredientItemsObject> items) {
     this.items = items;
+    return this;
+  }
+
+  public IngredientObject addItemsItem(IngredientItemsObject itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<>();
+    }
+    this.items.add(itemsItem);
     return this;
   }
 
@@ -54,11 +65,11 @@ public class IngredientObject   {
 
   @Valid
 
-  public IngredientItemsObject getItems() {
+  public List<IngredientItemsObject> getItems() {
     return items;
   }
 
-  public void setItems(IngredientItemsObject items) {
+  public void setItems(List<IngredientItemsObject> items) {
     this.items = items;
   }
 

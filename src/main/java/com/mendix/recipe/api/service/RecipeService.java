@@ -1,6 +1,5 @@
 package com.mendix.recipe.api.service;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +66,7 @@ public class RecipeService {
 
 			// setting ingredients
 			List<Ingredient> ing = ingredientMap.get(r.getRecipeId());
-			ing.forEach(i -> i.setItems(ingredientItemsMap.get(i.getRecipeId())));
+			ing.stream().forEach(i -> i.setItems(ingredientItemsMap.get(i.getIngredientId())));
 			r.setIngredients(ing);
 
 			// setting directions
@@ -84,12 +83,12 @@ public class RecipeService {
 		Map<UUID, List<IngredientItems>> ingredientItemMap = new HashMap<>();
 
 		ingredientItems.forEach(i -> {
-			if (ingredientItemMap.containsKey(i.getRecipeId())) {
-				ingredientItemMap.get(i.getRecipeId()).add(i);
+			if (ingredientItemMap.containsKey(i.getIngredientId())) {
+				ingredientItemMap.get(i.getIngredientId()).add(i);
 			} else {
 				List<IngredientItems> ingredientItemListOf = new ArrayList<>();
 				ingredientItemListOf.add(i);
-				ingredientItemMap.put(i.getRecipeId(), ingredientItemListOf);
+				ingredientItemMap.put(i.getIngredientId(), ingredientItemListOf);
 			}
 		});
 
@@ -130,5 +129,17 @@ public class RecipeService {
 		
 		
 		return categoryMap;
+	}
+
+
+	public Recipe create(Recipe recipe) {
+
+		recipeServiceRepository.createRecipe(recipe);
+		recipeServiceHeadRepository.createRecipeHead(recipe.getHead());
+		categoryRepository.createCategory(recipe.getHead().getCategories());
+		recipeDirectionsRepository.createRecipeDirections(recipe.getDirections());
+		ingredientRepository.createIngredient(recipe.getIngredients());
+		ingredientItemRepository.createIngredientItems(recipe.getIngredients());
+		return recipe;
 	}
 }

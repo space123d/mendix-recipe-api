@@ -20,4 +20,6 @@ public class IngredientItemsDao {
 	private Integer quantity;
 	private String unit;
 	private byte[] recipeId;
+	private byte[] ingredientId;
+	private String items;
 }

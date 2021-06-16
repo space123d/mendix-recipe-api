@@ -6,4 +6,6 @@ import com.mendix.recipe.api.model.RecipeDirections;
 public interface RecipeDirectionsRepository {
 
 	List<RecipeDirections> getAvailableRecipeDirections();
+
+	void createRecipeDirections(RecipeDirections directions);
 }

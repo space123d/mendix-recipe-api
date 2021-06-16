@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T08:58:46.618447+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:32:02.593619+02:00[Europe/Amsterdam]")
 @Validated
 @Api(value = "Recipe", description = "the Recipe API")
 public interface RecipeApi {
@@ -113,7 +113,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -144,7 +144,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -176,7 +176,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" }, { \"Items\" : { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"123e4567-e89b-12d3-a456-426655440000\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"creationTimestamp\" : \"2000-01-23T04:56:07.000+00:00\", \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ], \"recipeId\" : \"123e4567-e89b-12d3-a456-426655440000\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }

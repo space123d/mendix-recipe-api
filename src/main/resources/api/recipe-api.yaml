@@ -184,7 +184,8 @@ components:
             example: "title"
           Items:
             type: array
-            $ref: '#/components/schemas/IngredientItemsObject'
+            items:
+              $ref: '#/components/schemas/IngredientItemsObject'
 
     IngredientItemsObject:
       type: object

@@ -15,4 +15,6 @@ public class IngredientItems {
 	private Integer quantity;
 	private String unit;
 	private UUID recipeId;
+	private UUID ingredientId;
+	private String item;
 }

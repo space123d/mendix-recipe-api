@@ -8,11 +8,13 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mendix.recipe.api.controller.generated.RecipeApi;
+import com.mendix.recipe.api.controller.mapper.RecipeServiceMapper;
 import com.mendix.recipe.api.model.Recipe;
 import com.mendix.recipe.api.model.generated.CategoryObject;
 import com.mendix.recipe.api.model.generated.CreateRecipeResponseObject;
@@ -24,24 +26,31 @@ import com.mendix.recipe.api.service.RecipeService;
 public class RecipeApiController implements RecipeApi {
 	
 	private RecipeService recipeService;
+	private RecipeServiceMapper mapper;
 
 	@Autowired
-	public RecipeApiController(RecipeService recipeService) {
+	public RecipeApiController(RecipeService recipeService, RecipeServiceMapper mapper) {
 		this.recipeService = recipeService;
+		this.mapper = mapper;
 	}
 
 	@Override
 	public ResponseEntity<List<RecipeObject>> getAvailableRecipes() {
 		
 		List<Recipe> recipelist = recipeService.getAvailableRecipes();
+		List<RecipeObject> recipeObjectList = mapper.toModelObject(recipelist);
 		
-		return RecipeApi.super.getAvailableRecipes();
+		return new ResponseEntity<>(recipeObjectList, HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<CreateRecipeResponseObject> createRecipe(@Valid RecipeObject recipeObject) {
-		// TODO Auto-generated method stub
-		return RecipeApi.super.createRecipe(recipeObject);
+
+		Recipe recipe = mapper.toModelObject(recipeObject);
+		Recipe createdRecipe = recipeService.create(recipe);
+		CreateRecipeResponseObject response = mapper.responseObject(createdRecipe);
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@Override

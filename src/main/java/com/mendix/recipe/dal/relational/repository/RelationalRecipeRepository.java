@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.repository.CrudRepository;
+
+import com.mendix.recipe.api.model.Recipe;
 import com.mendix.recipe.dal.relational.model.RecipeItemDao;
 
 public interface RelationalRecipeRepository extends CrudRepository<RecipeItemDao, UUID> {
