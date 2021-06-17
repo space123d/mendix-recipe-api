@@ -134,13 +134,6 @@ components:
     RecipeObject:
       type: object
       properties:
-        recipeId:
-          type: string
-          format: uuid
-          example: "123e4567-e89b-12d3-a456-426655440000"
-        creationTimestamp:
-          type: string
-          format: 'date-time'
         head:
            type: object
            properties:
@@ -168,10 +161,6 @@ components:
     CategoryObject:
       type: object
       properties:
-        categoryId:
-          type: string
-          format: uuid
-          example: "123e4567-e89b-12d3-a456-426655440000"
         categoryName:
             type: string
             example: "Main dish"

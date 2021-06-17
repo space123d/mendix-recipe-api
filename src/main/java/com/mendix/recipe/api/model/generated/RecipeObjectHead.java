@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
 /**
  * RecipeObjectHead
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:32:02.593619+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:55:08.024423+02:00[Europe/Amsterdam]")
 public class RecipeObjectHead   {
   @JsonProperty("title")
   private String title;

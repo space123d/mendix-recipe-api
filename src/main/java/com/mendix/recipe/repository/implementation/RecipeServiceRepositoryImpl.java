@@ -36,6 +36,7 @@ public class RecipeServiceRepositoryImpl implements RecipeServiceRepository {
 		for (RecipeItemDao dao : recipeDaoList) {
 			Recipe recipe = new Recipe();
 			recipe.setRecipeId(Utilities.byteArrayToUUID(dao.getRecipeId()));
+			recipe.setCreationTimestamp(dao.getCreationTimestamp());
 			output.add(recipe);
 		}
 

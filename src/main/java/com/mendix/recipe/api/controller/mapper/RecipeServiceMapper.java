@@ -38,9 +38,7 @@ public class RecipeServiceMapper {
 
 		output.setDirections(getDirections(input.getDirections()));
 		output.setHead(getHead(input.getHead()));
-		output.setCreationTimestamp(input.getCreationTimestamp());
 		output.setIngredients(getIngredients(input.getIngredients()));
-		output.setRecipeId(input.getRecipeId());
 
 		return output;
 	}
@@ -93,7 +91,6 @@ public class RecipeServiceMapper {
 		List<CategoryObject> catlist = new ArrayList<>();
 		categories.stream().forEach(c -> {
 			CategoryObject catObj = new CategoryObject();
-			catObj.setCategoryId(c.getCategoryId());
 			catObj.setCategoryName(c.getCategoryName());
 			catlist.add(catObj);
 		});
