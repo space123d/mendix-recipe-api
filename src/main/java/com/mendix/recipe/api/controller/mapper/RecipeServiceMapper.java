@@ -163,7 +163,7 @@ public class RecipeServiceMapper {
 		return rh;
 	}
 
-	public List<Category> getCategories(@Valid List<CategoryObject> categories, Recipe output, RecipeHead rh) {
+	public List<Category> getCategories(List<CategoryObject> categories, Recipe output, RecipeHead rh) {
 		List<Category> catList = new ArrayList<>();
 		categories.stream().forEach(c -> {
 			Category cat = new Category();
@@ -192,5 +192,19 @@ public class RecipeServiceMapper {
 		response.setId(recipe.getRecipeId());
 
 		return response;
+	}
+
+	public List<CategoryObject> toModelObjectCategory(List<Category> categoryList) {
+
+		List<CategoryObject> output = new ArrayList<>();
+
+		categoryList.stream().forEach(c -> {
+			CategoryObject cat = new CategoryObject();
+			cat.setCategoryName(c.getCategoryName());
+			output.add(cat);
+
+		});
+
+		return output;
 	}
 }

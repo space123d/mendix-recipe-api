@@ -16,6 +16,7 @@ import lombok.Setter;
 public class CategoryDao {
 
 	@Id
+	private byte[] id;
 	private byte[] categoryId;
 	private String categoryName;
 	private byte[] recipeId;

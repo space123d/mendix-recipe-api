@@ -2,6 +2,7 @@ package com.mendix.recipe.repository.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -58,6 +59,7 @@ public class IngredientItemRepositoryImpl implements IngredientItemRepository {
 			List<IngredientItems> items = ing.getItems();
 			items.stream().forEach(item -> {
 				IngredientItemsDao ingdao = new IngredientItemsDao();
+				ingdao.setId(Utilities.UUIDToByteArray(UUID.randomUUID()));
 				ingdao.setQuantity(item.getQuantity());
 				ingdao.setUnit(item.getUnit());
 				ingdao.setItems(item.getItem());

@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mendix.recipe.api.controller.generated.RecipeApi;
 import com.mendix.recipe.api.controller.mapper.RecipeServiceMapper;
+import com.mendix.recipe.api.model.Category;
 import com.mendix.recipe.api.model.Recipe;
 import com.mendix.recipe.api.model.generated.CategoryObject;
 import com.mendix.recipe.api.model.generated.CreateRecipeResponseObject;
 import com.mendix.recipe.api.model.generated.RecipeObject;
+import com.mendix.recipe.api.service.CategoryService;
 import com.mendix.recipe.api.service.RecipeService;
 
 @Controller
@@ -26,21 +28,25 @@ import com.mendix.recipe.api.service.RecipeService;
 public class RecipeApiController implements RecipeApi {
 	
 	private RecipeService recipeService;
+	private CategoryService categoryService;
 	private RecipeServiceMapper mapper;
 
+
 	@Autowired
-	public RecipeApiController(RecipeService recipeService, RecipeServiceMapper mapper) {
+	public RecipeApiController(RecipeService recipeService, RecipeServiceMapper mapper,
+			CategoryService categoryService) {
 		this.recipeService = recipeService;
 		this.mapper = mapper;
+		this.categoryService = categoryService;
 	}
 
 	@Override
 	public ResponseEntity<List<RecipeObject>> getAvailableRecipes() {
 		
 		List<Recipe> recipelist = recipeService.getAvailableRecipes();
-		List<RecipeObject> recipeObjectList = mapper.toModelObject(recipelist);
+		List<RecipeObject> response = mapper.toModelObject(recipelist);
 		
-		return new ResponseEntity<>(recipeObjectList, HttpStatus.OK);
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@Override
@@ -55,8 +61,10 @@ public class RecipeApiController implements RecipeApi {
 
 	@Override
 	public ResponseEntity<List<CategoryObject>> getAvailableCategories() {
-		// TODO Auto-generated method stub
-		return RecipeApi.super.getAvailableCategories();
+		List<Category> categoryList = categoryService.getAvailableCategories();
+		List<CategoryObject> response = mapper.toModelObjectCategory(categoryList);
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@Override

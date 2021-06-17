@@ -16,6 +16,7 @@ import lombok.Setter;
 public class IngredientItemsDao {
 
 	@Id
+	private byte[] id;
 	private byte[] itemId;
 	private Integer quantity;
 	private String unit;

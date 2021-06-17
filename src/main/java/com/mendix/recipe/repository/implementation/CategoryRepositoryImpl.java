@@ -2,6 +2,7 @@ package com.mendix.recipe.repository.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,6 +51,7 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 		List<CategoryDao> catDaoList = new ArrayList<>();
 		categories.stream().forEach(c -> {
 			CategoryDao catDao = new CategoryDao();
+			catDao.setId(Utilities.UUIDToByteArray(UUID.randomUUID()));
 			catDao.setCategoryName(c.getCategoryName());
 			catDao.setCategoryId(Utilities.UUIDToByteArray(c.getCategoryId()));
 			catDao.setRecipeId(Utilities.UUIDToByteArray(c.getRecipeId()));

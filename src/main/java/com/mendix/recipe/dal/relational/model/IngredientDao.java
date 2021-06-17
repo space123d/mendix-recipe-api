@@ -16,6 +16,7 @@ import lombok.Setter;
 public class IngredientDao {
 
 	@Id
+	private byte[] id;
 	private byte[] ingredientId;
 	private String title;
 	private byte[] ingredientItemId;
