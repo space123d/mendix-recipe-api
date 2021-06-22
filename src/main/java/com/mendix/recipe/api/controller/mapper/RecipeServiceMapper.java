@@ -16,8 +16,11 @@ import com.mendix.recipe.api.model.IngredientItems;
 import com.mendix.recipe.api.model.Recipe;
 import com.mendix.recipe.api.model.RecipeDirections;
 import com.mendix.recipe.api.model.RecipeHead;
+import com.mendix.recipe.api.model.exception.RecipeAPIException;
 import com.mendix.recipe.api.model.generated.CategoryObject;
 import com.mendix.recipe.api.model.generated.CreateRecipeResponseObject;
+import com.mendix.recipe.api.model.generated.ErrorMessage;
+import com.mendix.recipe.api.model.generated.ErrorObject;
 import com.mendix.recipe.api.model.generated.IngredientItemsObject;
 import com.mendix.recipe.api.model.generated.IngredientItemsObjectAmount;
 import com.mendix.recipe.api.model.generated.IngredientObject;
@@ -208,5 +211,18 @@ public class RecipeServiceMapper {
 		});
 
 		return output;
+	}
+
+	public ErrorObject baseExceptionToErrorResponseObject(RecipeAPIException exception) {
+		ErrorObject errorObject = new ErrorObject();
+
+		String message = exception.getMessage();
+
+		ErrorMessage errorMessage = new ErrorMessage();
+		errorMessage.setMessage(message);
+
+		errorObject.addErrorMessagesItem(errorMessage);
+
+		return errorObject;
 	}
 }

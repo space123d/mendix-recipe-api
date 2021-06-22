@@ -10,6 +10,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.mendix.recipe.api.model.*;
+import com.mendix.recipe.api.model.exception.RecipeNotFoundException;
 import com.mendix.recipe.repository.*;
 
 @Service
@@ -153,6 +154,11 @@ public class RecipeService {
 	public List<Recipe> getRecipeByCategory(UUID categoryId) {
 
 		List<Category> categoryList = categoryRepository.getCategory(categoryId);
+
+		if (categoryList == null || categoryList.isEmpty()) {
+			String message = String.format("Recipe not found for categoryId %s", categoryId);
+			throw new RecipeNotFoundException(message);
+		}
 
 		List<UUID> uuidList = new ArrayList<>();
 
