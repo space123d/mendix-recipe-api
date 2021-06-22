@@ -1,7 +1,10 @@
 package com.mendix.recipe.repository.implementation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -50,6 +53,31 @@ public class RecipeServiceRepositoryImpl implements RecipeServiceRepository {
 		recipeDao.setRecipeId(Utilities.UUIDToByteArray(recipe.getRecipeId()));
 		repository.save(recipeDao);
 
+	}
+
+	@Override
+	public List<Recipe> getRecipes(Iterable<UUID> recipeIds) {
+		List<Recipe> outputList = new ArrayList<>();
+
+		List<byte[]> inputList = new ArrayList<>();
+
+		recipeIds.forEach(a -> {
+
+			byte[] b = Utilities.UUIDToByteArray(a);
+			inputList.add(b);
+		});
+
+		Iterable<RecipeItemDao> recipeDao = repository.findByRecipeId(inputList);
+
+		recipeDao.forEach(rd -> {
+			Recipe recipe = new Recipe();
+			recipe.setRecipeId(Utilities.byteArrayToUUID(rd.getRecipeId()));
+			recipe.setCreationTimestamp(rd.getCreationTimestamp());
+
+			outputList.add(recipe);
+		});
+
+		return outputList;
 	}
 
 }

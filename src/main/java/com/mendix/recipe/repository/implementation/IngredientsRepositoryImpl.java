@@ -60,4 +60,28 @@ public class IngredientsRepositoryImpl implements IngredientsRepository {
 		repository.saveAll(dao);
 	}
 
+	@Override
+	public List<Ingredient> getRecipeIngredient(Iterable<UUID> iterable) {
+		List<Ingredient> outputList = new ArrayList<>();
+		List<byte[]> inputList = new ArrayList<>();
+
+		iterable.forEach(a -> {
+
+			byte[] b = Utilities.UUIDToByteArray(a);
+			inputList.add(b);
+		});
+		Iterable<IngredientDao> recipeDao = repository.findByRecipeId(inputList);
+
+		recipeDao.forEach(dao -> {
+			Ingredient ingredient = new Ingredient();
+			ingredient.setIngredientId(Utilities.byteArrayToUUID(dao.getIngredientId()));
+			ingredient.setRecipeId(Utilities.byteArrayToUUID(dao.getRecipeId()));
+			ingredient.setTitle(dao.getTitle());
+
+			outputList.add(ingredient);
+		});
+
+		return outputList;
+	}
+
 }

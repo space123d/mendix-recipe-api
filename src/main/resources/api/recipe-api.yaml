@@ -86,7 +86,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/RecipeObject"
+                type: array
+                items:
+                  $ref: "#/components/schemas/RecipeObject"
         "404":
           description: Recipe not found
           content:
@@ -161,6 +163,9 @@ components:
     CategoryObject:
       type: object
       properties:
+        categoryId:
+            format: uuid
+            type: string
         categoryName:
             type: string
             example: "Main dish"

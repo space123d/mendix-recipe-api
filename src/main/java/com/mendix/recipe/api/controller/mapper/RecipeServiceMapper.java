@@ -92,6 +92,7 @@ public class RecipeServiceMapper {
 		categories.stream().forEach(c -> {
 			CategoryObject catObj = new CategoryObject();
 			catObj.setCategoryName(c.getCategoryName());
+			catObj.setCategoryId(c.getCategoryId());
 			catlist.add(catObj);
 		});
 
@@ -201,6 +202,7 @@ public class RecipeServiceMapper {
 		categoryList.stream().forEach(c -> {
 			CategoryObject cat = new CategoryObject();
 			cat.setCategoryName(c.getCategoryName());
+			cat.setCategoryId(c.getCategoryId());
 			output.add(cat);
 
 		});

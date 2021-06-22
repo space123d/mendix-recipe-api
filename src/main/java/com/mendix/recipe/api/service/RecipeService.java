@@ -1,6 +1,7 @@
 package com.mendix.recipe.api.service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,15 @@ public class RecipeService {
 		List<Ingredient> ingredientList = ingredientRepository.getAvailableIngredients();
 		List<IngredientItems> ingredientItems = ingredientItemRepository.getAvailableIngredientItems();
 
+		addRecipe(recipeList, recipeHeadList, categoryList, recipeDirectionsList, ingredientList, ingredientItems);
+
+		return recipeList;
+
+	}
+
+	private void addRecipe(List<Recipe> recipeList, List<RecipeHead> recipeHeadList, List<Category> categoryList,
+			List<RecipeDirections> recipeDirectionsList, List<Ingredient> ingredientList,
+			List<IngredientItems> ingredientItems) {
 		// map each with recipe id
 		Map<UUID, RecipeHead> recipeHeadMap = new HashMap<>();
 		recipeHeadList.stream().forEach(r -> recipeHeadMap.put(r.getRecipeId(), r));
@@ -73,9 +83,6 @@ public class RecipeService {
 			r.setDirections(recipeDirectionsMap.get(r.getRecipeId()));
 
 		});
-
-		return recipeList;
-
 	}
 
 	public Map<UUID, List<IngredientItems>> groupIngredientItems(List<IngredientItems> ingredientItems) {
@@ -141,5 +148,27 @@ public class RecipeService {
 		ingredientRepository.createIngredient(recipe.getIngredients());
 		ingredientItemRepository.createIngredientItems(recipe.getIngredients());
 		return recipe;
+	}
+
+	public List<Recipe> getRecipeByCategory(UUID categoryId) {
+
+		List<Category> categoryList = categoryRepository.getCategory(categoryId);
+
+		List<UUID> uuidList = new ArrayList<>();
+
+		categoryList.stream().forEach(cl -> uuidList.add(cl.getRecipeId()));
+		
+		Collection<UUID> collection = uuidList;
+		Iterable<UUID> iterable = collection;
+
+		List<Recipe> recipeList = recipeServiceRepository.getRecipes(iterable);
+		List<RecipeHead> recipeHeadList = recipeServiceHeadRepository.getRecipeHead(iterable);
+		List<RecipeDirections> recipeDirectionsList = recipeDirectionsRepository.getRecipeDirections(iterable);
+		List<Ingredient> ingredientList = ingredientRepository.getRecipeIngredient(iterable);
+		List<IngredientItems> ingredientItems = ingredientItemRepository.getRecipeIngredientItem(iterable);
+
+		addRecipe(recipeList, recipeHeadList, categoryList, recipeDirectionsList, ingredientList, ingredientItems);
+
+		return recipeList;
 	}
 }

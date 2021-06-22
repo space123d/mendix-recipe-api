@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.mendix.recipe.api.model.Ingredient;
 import com.mendix.recipe.api.model.IngredientItems;
-import com.mendix.recipe.dal.relational.model.IngredientDao;
 import com.mendix.recipe.dal.relational.model.IngredientItemsDao;
 import com.mendix.recipe.dal.relational.repository.RelationalIngredientItemRepository;
 import com.mendix.recipe.repository.IngredientItemRepository;
@@ -72,6 +71,32 @@ public class IngredientItemRepositoryImpl implements IngredientItemRepository {
 		});
 		repository.saveAll(ingrDao);
 
+	}
+
+	@Override
+	public List<IngredientItems> getRecipeIngredientItem(Iterable<UUID> iterable) {
+		List<IngredientItems> outputList = new ArrayList<>();
+		List<byte[]> inputList = new ArrayList<>();
+
+		iterable.forEach(a -> {
+
+			byte[] b = Utilities.UUIDToByteArray(a);
+			inputList.add(b);
+		});
+		Iterable<IngredientItemsDao> recipeDao = repository.findByRecipeId(inputList);
+
+		recipeDao.forEach(dao -> {
+			IngredientItems ingredientItems = new IngredientItems();
+			ingredientItems.setItemId(Utilities.byteArrayToUUID(dao.getItemId()));
+			ingredientItems.setRecipeId(Utilities.byteArrayToUUID(dao.getRecipeId()));
+			ingredientItems.setItem(dao.getItems());
+			ingredientItems.setQuantity(dao.getQuantity());
+			ingredientItems.setUnit(dao.getUnit());
+			ingredientItems.setIngredientId(Utilities.byteArrayToUUID(dao.getIngredientId()));
+			outputList.add(ingredientItems);
+		});
+
+		return outputList;
 	}
 
 }

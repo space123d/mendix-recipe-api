@@ -68,9 +68,12 @@ public class RecipeApiController implements RecipeApi {
 	}
 
 	@Override
-	public ResponseEntity<RecipeObject> getRecipe(UUID categoryId) {
-		// TODO Auto-generated method stub
-		return RecipeApi.super.getRecipe(categoryId);
+	public ResponseEntity<List<RecipeObject>> getRecipe(UUID categoryId) {
+
+		List<Recipe> recipeByCategory = recipeService.getRecipeByCategory(categoryId);
+		List<RecipeObject> response = mapper.toModelObject(recipeByCategory);
+
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@Override

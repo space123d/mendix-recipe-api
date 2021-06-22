@@ -2,6 +2,7 @@ package com.mendix.recipe.repository.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -54,6 +55,31 @@ public class RecipeDirectionsRepositoryImpl implements RecipeDirectionsRepositor
 		dao.setStep(directions.getStep());
 
 		repository.save(dao);
+	}
+
+	@Override
+	public List<RecipeDirections> getRecipeDirections(Iterable<UUID> iterable) {
+		List<RecipeDirections> outputList = new ArrayList<>();
+
+		List<byte[]> inputList = new ArrayList<>();
+
+		iterable.forEach(a -> {
+
+			byte[] b = Utilities.UUIDToByteArray(a);
+			inputList.add(b);
+		});
+		Iterable<RecipeDirectionsDao> recipeDao = repository.findByRecipeId(inputList);
+
+		recipeDao.forEach(dao -> {
+			RecipeDirections recipeDirections = new RecipeDirections();
+			recipeDirections.setId(Utilities.byteArrayToUUID(dao.getId()));
+			recipeDirections.setRecipeId(Utilities.byteArrayToUUID(dao.getRecipeId()));
+			recipeDirections.setStep(dao.getStep());
+
+			outputList.add(recipeDirections);
+		});
+
+		return outputList;
 	}
 
 }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.UUID;
 import org.openapitools.jackson.nullable.JsonNullable;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -12,10 +13,34 @@ import javax.validation.constraints.*;
 /**
  * CategoryObject
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:55:08.024423+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-22T13:42:58.760990+02:00[Europe/Amsterdam]")
 public class CategoryObject   {
+  @JsonProperty("categoryId")
+  private UUID categoryId;
+
   @JsonProperty("categoryName")
   private String categoryName;
+
+  public CategoryObject categoryId(UUID categoryId) {
+    this.categoryId = categoryId;
+    return this;
+  }
+
+  /**
+   * Get categoryId
+   * @return categoryId
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public UUID getCategoryId() {
+    return categoryId;
+  }
+
+  public void setCategoryId(UUID categoryId) {
+    this.categoryId = categoryId;
+  }
 
   public CategoryObject categoryName(String categoryName) {
     this.categoryName = categoryName;
@@ -47,12 +72,13 @@ public class CategoryObject   {
       return false;
     }
     CategoryObject categoryObject = (CategoryObject) o;
-    return Objects.equals(this.categoryName, categoryObject.categoryName);
+    return Objects.equals(this.categoryId, categoryObject.categoryId) &&
+        Objects.equals(this.categoryName, categoryObject.categoryName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categoryName);
+    return Objects.hash(categoryId, categoryName);
   }
 
   @Override
@@ -60,6 +86,7 @@ public class CategoryObject   {
     StringBuilder sb = new StringBuilder();
     sb.append("class CategoryObject {\n");
     
+    sb.append("    categoryId: ").append(toIndentedString(categoryId)).append("\n");
     sb.append("    categoryName: ").append(toIndentedString(categoryName)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -2,6 +2,7 @@ package com.mendix.recipe.repository.implementation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,12 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 
 	private List<Category> getCategoryData(List<CategoryDao> categoryDaoList) {
 
+		List<Category> output = convertToCategoryList(categoryDaoList);
+
+		return output;
+	}
+
+	private List<Category> convertToCategoryList(List<CategoryDao> categoryDaoList) {
 		List<Category> output = new ArrayList<>();
 
 		for (CategoryDao dao : categoryDaoList) {
@@ -42,7 +49,6 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 			category.setCategoryName(dao.getCategoryName());
 			output.add(category);
 		}
-
 		return output;
 	}
 
@@ -61,6 +67,24 @@ public class CategoryRepositoryImpl implements CategoryRepository {
 		});
 
 		repository.saveAll(catDaoList);
+	}
+
+	@Override
+	public List<Category> getCategory(UUID categoryId) {
+		List<CategoryDao> catDao = new ArrayList<>();
+
+		Optional<CategoryDao> catDaolist = repository.findByCategoryId(Utilities.UUIDToByteArray(categoryId));
+
+		catDaolist.stream().forEach(cd -> {
+			CategoryDao cat = new CategoryDao();
+			cat.setRecipeId(cd.getCategoryId());
+			cat.setCategoryId(cd.getCategoryId());
+			cat.setCategoryName(cd.getCategoryName());
+			cat.setId(cd.getId());
+			catDao.add(cd);
+		});
+
+		return convertToCategoryList(catDao);
 	}
 
 }

@@ -15,8 +15,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CategoryDao {
 
-	@Id
 	private byte[] id;
+	@Id
 	private byte[] categoryId;
 	private String categoryName;
 	private byte[] recipeId;

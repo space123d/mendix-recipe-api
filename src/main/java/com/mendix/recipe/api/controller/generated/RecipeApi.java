@@ -25,7 +25,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-16T17:55:08.024423+02:00[Europe/Amsterdam]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2021-06-22T13:42:58.760990+02:00[Europe/Amsterdam]")
 @Validated
 @Api(value = "Recipe", description = "the Recipe API")
 public interface RecipeApi {
@@ -85,7 +85,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"categoryName\" : \"Main dish\" }";
+                    String exampleString = "{ \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -113,7 +113,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\" }, { \"categoryName\" : \"Main dish\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -132,19 +132,19 @@ public interface RecipeApi {
      * @return Returns the specific Recipe matching the passed id (status code 200)
      *         or Recipe not found (status code 404)
      */
-    @ApiOperation(value = "Gets a Recipe given its Category id", nickname = "getRecipe", notes = "Gets a Recipe by Category id ", response = RecipeObject.class, tags={ "Recipe", })
+    @ApiOperation(value = "Gets a Recipe given its Category id", nickname = "getRecipe", notes = "Gets a Recipe by Category id ", response = RecipeObject.class, responseContainer = "List", tags={ "Recipe", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Returns the specific Recipe matching the passed id", response = RecipeObject.class),
+        @ApiResponse(code = 200, message = "Returns the specific Recipe matching the passed id", response = RecipeObject.class, responseContainer = "List"),
         @ApiResponse(code = 404, message = "Recipe not found", response = ErrorObject.class) })
     @GetMapping(
         value = "/v1/recipes/categories/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<RecipeObject> getRecipe(@ApiParam(value = "The unique id",required=true) @PathVariable("id") UUID id) {
+    default ResponseEntity<List<RecipeObject>> getRecipe(@ApiParam(value = "The unique id",required=true) @PathVariable("id") UUID id) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\" }, { \"categoryName\" : \"Main dish\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -176,7 +176,7 @@ public interface RecipeApi {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\" }, { \"categoryName\" : \"Main dish\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
+                    String exampleString = "{ \"head\" : { \"yield\" : 6, \"categories\" : [ { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" }, { \"categoryName\" : \"Main dish\", \"categoryId\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\" } ], \"title\" : \"title\" }, \"directions\" : { \"step\" : \"steps...\" }, \"ingredients\" : [ { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" }, { \"Items\" : [ { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" }, { \"amount\" : { \"unit\" : \"pound\", \"quantity\" : 6 }, \"item\" : \"Onion; large, chopped\" } ], \"title\" : \"title\" } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
